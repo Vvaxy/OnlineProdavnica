@@ -1,9 +1,6 @@
 # OnlineProdavniceEF
 
-* controlleri koriste `AppDbContext db = new AppDbContext();`
-* View stranice su jednostavne
-* zadržane su osnovne funkcije projekta
-
+* controlleri koriste `AppDbContext db = new AppDbContext();
 ## Funkcije
 
 * registracija korisnika
