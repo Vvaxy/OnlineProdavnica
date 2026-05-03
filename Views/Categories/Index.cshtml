@@ -1,0 +1,23 @@
+@model List<Category>
+@{
+    ViewData["Title"] = "Kategorije";
+}
+
+<h2>Kategorije</h2>
+
+<a class="btn btn-green" href="/Categories/Create">Dodaj kategoriju</a>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Naziv kategorije</th>
+    </tr>
+
+    @foreach (Category c in Model)
+    {
+        <tr>
+            <td>@c.Id</td>
+            <td><b>@c.Name</b></td>
+        </tr>
+    }
+</table>

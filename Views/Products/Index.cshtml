@@ -1,0 +1,87 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "Proizvodi";
+    bool isAdmin = ViewBag.IsAdmin == true;
+}
+
+<h2>Proizvodi</h2>
+
+<div class="filter-box">
+    <form method="get">
+        <div>
+            <label>Pretraga po nazivu</label>
+            <input name="search" value="@ViewBag.Search" placeholder="npr. laptop" />
+        </div>
+
+        <div>
+            <label>Kategorija</label>
+            <select name="categoryId" asp-items="ViewBag.Categories">
+                <option value="">Sve kategorije</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Sortiranje</label>
+            <select name="sort">
+                <option value="">Naziv A-Z</option><!--vrednost koja se salje seVeru kad se izabere ta opciojea-->
+                <option value="name_desc">Naziv Z-A</option>
+                <option value="price">Cena rastuće</option>
+                <option value="price_desc">Cena opadajuće</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Prikaži</button>
+        </div>
+    </form>
+</div>
+
+@if (isAdmin)
+{
+    <a class="btn btn-green" href="/Products/Create">Dodaj proizvod</a>
+}
+
+<table>
+    <tr>
+        <th>Slika</th>
+        <th>Naziv</th>
+        <th>Cena</th>
+        <th>Količina</th>
+        <th>Kategorija</th>
+        <th>Akcije</th>
+    </tr>
+
+    @foreach (Product p in Model)
+    {
+        <tr>
+            <td><img class="product-img" src="@p.ImageUrl" /></td>
+            <td><b>@p.Name</b></td>
+            <td class="price">@p.Price din</td>
+            <td>@p.Quantity</td>
+            <td>@p.Category?.Name</td>
+            <td>
+                <a class="btn" href="/Products/Details/@p.Id">Detalji</a>
+
+                @if (isAdmin)
+                {
+                    <a class="btn btn-gray" href="/Products/Edit/@p.Id">Izmeni</a>
+                    <a class="btn btn-red" href="/Products/Delete/@p.Id">Obriši</a>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="pagination">
+@for (int i = 1; i <= ViewBag.TotalPages; i++)
+{
+    if (i == ViewBag.Page)
+    {
+        <a class="active" href="/Products/Index?page=@i&search=@ViewBag.Search&categoryId=@ViewBag.CategoryId&sort=@ViewBag.Sort">@i</a>
+    }
+    else
+    {
+        <a href="/Products/Index?page=@i&search=@ViewBag.Search&categoryId=@ViewBag.CategoryId&sort=@ViewBag.Sort">@i</a>
+    }
+}
+</div>

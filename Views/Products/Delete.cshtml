@@ -1,0 +1,16 @@
+@model Product
+@{
+    ViewData["Title"] = "Obriši proizvod";
+}
+
+<h2>Obriši proizvod</h2>
+
+<div class="delete-box">
+    <p>Da li sigurno želiš da obrišeš proizvod: <b>@Model.Name</b>?</p>
+
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button class="btn-red" type="submit">Obriši</button>
+        <a class="btn btn-gray" href="/Products/Index">Odustani</a>
+    </form>
+</div>

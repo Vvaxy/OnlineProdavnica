@@ -1,0 +1,23 @@
+@model Product
+@{
+    ViewData["Title"] = "Detalji";
+    bool isAdmin = ViewBag.IsAdmin == true;
+}
+
+<h2>Detalji proizvoda</h2>
+
+<div class="details-box">
+    <p><img class="big-img" src="@Model.ImageUrl" /></p>
+    <p><b>Naziv:</b> @Model.Name</p>
+    <p><b>Cena:</b> <span class="price">@Model.Price din</span></p>
+    <p><b>Količina:</b> @Model.Quantity</p>
+    <p><b>Kategorija:</b> @Model.Category?.Name</p>
+    <p><b>Opis:</b> @Model.Description</p>
+
+    <a class="btn btn-gray" href="/Products/Index">Nazad</a>
+
+    @if (isAdmin)
+    {
+        <a class="btn" href="/Products/Edit/@Model.Id">Izmeni</a>
+    }
+</div>

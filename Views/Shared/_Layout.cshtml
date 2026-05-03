@@ -1,0 +1,48 @@
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Online prodavnica</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="topbar">
+        <div class="brand">Online prodavnica</div>
+
+        <div class="nav">
+            <a href="/Home/Index">Početna</a>
+            <a href="/Products/Index">Proizvodi</a>
+            <a href="/Home/About">O projektu</a>
+
+            @if (Context.Session.GetString("IsAdmin") == "True")
+            {
+                <a href="/Categories/Index">Kategorije</a>
+            }
+        </div>
+
+        <div class="user-menu">
+            @if (Context.Session.GetString("UserEmail") == null)
+            {
+                <a class="login-link" href="/Account/Login">Prijava</a>
+                <a class="register-link" href="/Account/Register">Registracija</a>
+            }
+            else
+            {
+                <span class="hello">@Context.Session.GetString("UserName")</span>
+                <a class="login-link" href="/Profile/Index">Profil</a>
+                <a class="register-link" href="/Account/Logout">Odjava</a>
+            }
+        </div>
+    </div>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer>
+        Školski projekat - Online prodavnica
+    </footer>
+</body>
+</html>

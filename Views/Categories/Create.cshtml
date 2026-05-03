@@ -1,0 +1,17 @@
+@model Category
+@{
+    ViewData["Title"] = "Dodaj kategoriju";
+}
+
+<h2>Dodaj kategoriju</h2>
+
+<div class="form-box">
+    <form method="post">
+        <label>Naziv kategorije</label>
+        <input name="Name" value="@Model?.Name" />
+        <span asp-validation-for="Name"></span>
+
+        <button type="submit">Sačuvaj</button>
+        <a class="btn btn-gray" href="/Categories/Index">Nazad</a>
+    </form>
+</div>

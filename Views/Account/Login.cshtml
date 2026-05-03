@@ -1,0 +1,23 @@
+@model LoginViewModel//koristi loginview model
+@{
+    ViewData["Title"] = "Prijava";
+}
+
+<h2>Prijava</h2>
+
+<div class="form-box">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div><!--sve validacije prikazi tu-->
+
+        <label>Email</label>
+        <input name="Email" value="@Model?.Email" />
+        <span asp-validation-for="Email"></span>
+
+        <label>Lozinka</label>
+        <input name="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+
+        <button type="submit">Prijavi se</button>
+        <a class="btn btn-gray" href="/Account/Register">Registracija</a>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+@model Product
+@{
+    ViewData["Title"] = "Dodaj proizvod";
+}
+
+<h2>Dodaj proizvod</h2>
+
+<div class="form-box">
+    <form method="post">
+        <label>Naziv</label>
+        <input name="Name" value="@Model?.Name" />
+        <span asp-validation-for="Name"></span>
+
+        <div class="form-row">
+            <div>
+                <label>Cena</label>
+                <input name="Price" value="@Model?.Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+
+            <div>
+                <label>Količina</label>
+                <input name="Quantity" value="@Model?.Quantity" />
+                <span asp-validation-for="Quantity"></span>
+            </div>
+
+            <div>
+                <label>Kategorija</label>
+                <select name="CategoryId" asp-items="ViewBag.Categories"></select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+        </div>
+
+        <label>Opis</label>
+        <textarea name="Description">@Model?.Description</textarea>
+
+        <label>Slika URL</label>
+        <input name="ImageUrl" value="@Model?.ImageUrl" placeholder="/images/product-placeholder.png" />
+
+        <button type="submit">Sačuvaj</button>
+        <a class="btn btn-gray" href="/Products/Index">Nazad</a>
+    </form>
+</div>

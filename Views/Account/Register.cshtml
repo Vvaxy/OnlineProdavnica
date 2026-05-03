@@ -1,0 +1,25 @@
+@model User
+@{
+    ViewData["Title"] = "Registracija";
+}
+
+<h2>Registracija</h2>
+
+<div class="form-box">
+    <form method="post">
+        <label>Ime i prezime</label>
+        <input name="FullName" value="@Model?.FullName" />
+        <span asp-validation-for="FullName"></span>
+
+        <label>Email</label>
+        <input name="Email" value="@Model?.Email" />
+        <span asp-validation-for="Email"></span>
+
+        <label>Lozinka</label>
+        <input name="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+
+        <button type="submit">Registruj se</button>
+        <a class="btn btn-gray" href="/Account/Login">Već imam nalog</a>
+    </form>
+</div>

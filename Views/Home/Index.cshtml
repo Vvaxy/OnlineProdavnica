@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Početna";
+}
+
+<div class="hero">
+    <h2>Dobrodošli u online prodavnicu</h2>
+    <p>Jednostavan školski MVC projekat za rad sa proizvodima, kategorijama i korisnicima.</p>
+    <a class="btn btn-green" href="/Products/Index">Pogledaj proizvode</a>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <b>@ViewBag.ProductCount</b>
+        <span>Proizvoda u bazi</span>
+    </div>
+
+    <div class="stat-card">
+        <b>@ViewBag.CategoryCount</b>
+        <span>Kategorija u bazi</span>
+    </div>
+</div>

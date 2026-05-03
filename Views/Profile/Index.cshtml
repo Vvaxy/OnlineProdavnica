@@ -1,0 +1,14 @@
+@model User
+@{
+    ViewData["Title"] = "Profil";
+}
+
+<h2>Moj profil</h2>
+
+@if (Model != null)
+{
+    <div class="profile-card">
+        <p><b>Ime:</b> @Model.FullName</p>
+        <p><b>Email:</b> @Model.Email</p>
+    </div>
+}
