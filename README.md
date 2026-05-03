@@ -1,7 +1,5 @@
 # OnlineProdavniceEF
 
-Ovo je uprošćena verzija projekta.
-
 * controlleri koriste `AppDbContext db = new AppDbContext();`
 * View stranice su jednostavne
 * zadržane su osnovne funkcije projekta
